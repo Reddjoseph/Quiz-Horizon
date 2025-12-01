@@ -192,3 +192,38 @@ input[type="file"] {
 body.dark .option {
   color: #eee;
 }
+
+#manualInput {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #888;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  background-color: var(--option-bg);
+  color: var(--text-color);
+}
+
+#manualInput:focus {
+  outline: none;
+  border-color: var(--btn-bg);
+}
+
+#startManualBtn {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  transition: 0.2s;
+}
+
+#startManualBtn:hover {
+  background-color: var(--btn-hover);
+}

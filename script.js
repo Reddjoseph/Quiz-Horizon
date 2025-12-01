@@ -162,3 +162,27 @@ function shuffleArray(array) {
   }
   return array;
 }
+
+const manualInput = document.getElementById('manualInput');
+const startManualBtn = document.getElementById('startManualBtn');
+
+// Start quiz from manual input
+startManualBtn.addEventListener('click', () => {
+  const text = manualInput.value.trim();
+  if (!text) {
+    alert("Please type or paste your questions.");
+    return;
+  }
+
+  resetQuiz();
+  parseQuestions(text);
+
+  if (questions.length > 0) {
+    questions = shuffleArray(questions);
+    quizContainer.style.display = 'block';
+    fileContainer.style.display = 'none';
+    showQuestion();
+  } else {
+    alert('No questions detected. Make sure to use numbers for questions, A-D for options, and ✔️ for correct answers.');
+  }
+});

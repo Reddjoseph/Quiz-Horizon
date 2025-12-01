@@ -11,9 +11,13 @@
   <h1>Quiz Horizon</h1>
   <button id="themeToggle" class="theme-toggle">Switch to Dark Theme</button>
 
-  <div id="fileContainer">
+<div id="fileContainer">
+    <p>Upload a text file OR type/paste your questions below:</p>
     <input type="file" id="txtFile" accept=".txt">
-  </div>
+
+    <textarea id="manualInput" placeholder="Type or paste your questions here with ✔️ for correct answers..." rows="10"></textarea>
+    <button id="startManualBtn">Start Quiz</button>
+</div>
 
   <div id="quizContainer" class="quiz-container" style="display:none;">
     <div id="progressContainer">
