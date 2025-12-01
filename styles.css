@@ -161,3 +161,34 @@ input[type="file"] {
   font-weight: bold;
   font-size: 18px;
 }
+
+.option {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 15px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--option-bg);
+  transition: 0.3s ease, transform 0.2s ease;
+  text-align: left;
+  color: var(--text-color); 
+}
+
+.option:hover {
+  background-color: var(--option-hover);
+  transform: translateY(-2px);
+}
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 10px;
+  transition: width 0.5s ease; 
+}
+
+body.dark .option {
+  color: #eee;
+}
