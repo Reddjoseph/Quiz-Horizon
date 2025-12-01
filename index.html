@@ -9,28 +9,70 @@
 <body>
 <div class="container">
   <h1>Quiz Horizon</h1>
-  <button id="themeToggle" class="theme-toggle">Switch to Dark Theme</button>
 
-<div id="fileContainer">
-    <p>Upload a text file OR type/paste your questions below:</p>
-    <input type="file" id="txtFile" accept=".txt">
+  <!-- Theme Switch -->
+  <button id="themeToggle" class="theme-toggle top-right">Light</button>
 
-    <textarea id="manualInput" placeholder="Type or paste your questions here with ✔️ for correct answers..." rows="10"></textarea>
-    <button id="startManualBtn">Start Quiz</button>
-</div>
+  <!-- Cancel Button -->
+  <button id="cancelBtn" class="cancel-btn top-left hidden">Cancel Quiz</button>
 
+  <!-- Input Menu -->
+  <div id="fileContainer">
+    <p class="center-text">Choose how to start your quiz:</p>
+
+    <div class="input-choice">
+      <button id="uploadBtn">Upload Text File</button>
+      <button id="manualBtn">Type/Paste Questions</button>
+    </div>
+
+    <div id="uploadContainer" style="display:none;">
+      <input type="file" id="txtFile" accept=".txt">
+    </div>
+
+    <div id="manualContainer" style="display:none;">
+      <textarea id="manualInput" placeholder="Type or paste your questions here with ✔️ for correct answers..."></textarea>
+      <button id="startManualBtn">Start Quiz</button>
+    </div>
+  </div>
+
+  <!-- Quiz Container -->
   <div id="quizContainer" class="quiz-container" style="display:none;">
+
     <div id="progressContainer">
       <div id="progressBar"></div>
     </div>
+
+    <div id="shortcutInfo" class="shortcut-info">
+      <strong>Keyboard Shortcuts:</strong>
+      <ul>
+        <li><strong>1-4:</strong> Select option A-D</li>
+        <li><strong>Enter:</strong> Next question</li>
+        <li><strong>Esc:</strong> Cancel quiz</li>
+      </ul>
+    </div>
+
+
     <div id="questionCounter"></div>
     <div id="questionContainer"></div>
     <div id="feedback"></div>
-    <button id="nextBtn" style="display:none;">Next</button>
-    <div style="text-align:center;">
-      <button id="cancelBtn" style="display:inline-block; background-color:#dc3545;">Cancel Quiz</button>
+
+    <div class="quiz-buttons">
+      <button id="nextBtn" class="next-btn" style="display:none;">Next</button>
     </div>
+
     <div id="score"></div>
+    <div id="restartMenu"></div>
+  </div>
+</div>
+
+<!-- Cancel Modal -->
+<div id="cancelModal" class="modal hidden">
+  <div class="modal-content">
+    <p>Are you sure you want to cancel the quiz? Your current progress will be lost.</p>
+    <div class="modal-buttons">
+      <button id="confirmCancel" class="confirm">Yes, Cancel</button>
+      <button id="closeModal" class="close">No, Go Back</button>
+    </div>
   </div>
 </div>
 

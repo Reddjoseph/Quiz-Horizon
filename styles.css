@@ -14,7 +14,6 @@ body.dark {
   --text-color: #eee;
   --container-bg: #2c2c2c;
   --btn-bg: #28a745;
-  --btn-text: #fff;
   --btn-hover: #1e7e34;
   --option-bg: #3a3a3a;
   --option-hover: #505050;
@@ -28,14 +27,68 @@ body {
   padding: 0;
 }
 
+/* --------------------
+   TOP BUTTONS
+-------------------- */
+.top-left {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 999;
+}
+
+.top-right {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 999;
+}
+
+.hidden { display: none !important; }
+
+/* Cancel Modal */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--container-bg);
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.confirm { background-color: #dc3545; color: #fff; }
+.close { background-color: #007bff; color: #fff; }
+
+/* --------------------
+       MAIN UI
+-------------------- */
 .container {
   max-width: 800px;
-  margin: 50px auto;
+  margin: 80px auto 50px auto;
   background: var(--container-bg);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   position: relative;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
 h1 {
@@ -43,39 +96,70 @@ h1 {
   margin-bottom: 20px;
 }
 
+.center-text { text-align: center; }
+
+/* Theme Toggle */
 .theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   padding: 8px 15px;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
   border-radius: 5px;
+  border: none;
+  cursor: pointer;
   background-color: var(--btn-bg);
   color: var(--btn-text);
+}
+
+/* Input Selection */
+.input-choice { text-align: center; margin-bottom: 10px; }
+
+.input-choice button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 17px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
   transition: 0.2s;
 }
 
-.theme-toggle:hover {
-  background-color: var(--btn-hover);
+.input-choice button:hover { background-color: var(--btn-hover); }
+
+/* Manual input box */
+#manualInput {
+  width: 100%;
+  height: 220px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  background-color: var(--option-bg);
+  color: var(--text-color);
+  overflow-y: scroll;
+  resize: none;
+  margin-top: 10px;
 }
 
-input[type="file"] {
-  display: block;
-  margin: 0 auto 20px auto;
+#startManualBtn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.quiz-container {
-  margin-top: 20px;
-}
+/* Quiz Area */
+.quiz-container { margin-top: 20px; }
 
 #progressContainer {
   width: 100%;
   background-color: #ddd;
   height: 20px;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 #progressBar {
@@ -83,97 +167,30 @@ input[type="file"] {
   height: 100%;
   background-color: #007bff;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: width 0.4s ease-in-out;
 }
 
+/* Question counter spacing */
 #questionCounter {
   text-align: center;
-  margin-bottom: 10px;
   font-weight: bold;
-}
-
-.question {
-  font-size: 18px;
   margin-bottom: 15px;
-}
-
-.option {
-  display: block;
-  width: 100%;
-  margin: 8px 0;
-  padding: 12px 15px;
-  border: 1px solid #888;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: var(--option-bg);
-  transition: 0.2s;
-  text-align: left;
-}
-
-.option:hover {
-  background-color: var(--option-hover);
-}
-
-.correct {
-  color: green;
-  font-weight: bold;
-}
-
-.wrong {
-  color: red;
-  font-weight: bold;
-}
-
-#nextBtn, #cancelBtn {
-  margin-top: 15px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  transition: 0.2s;
-}
-
-#nextBtn {
-  background-color: var(--btn-bg);
-}
-
-#nextBtn:hover {
-  background-color: var(--btn-hover);
-}
-
-#cancelBtn {
-  background-color: #dc3545;
-}
-
-#cancelBtn:hover {
-  background-color: #b02a37;
-}
-
-#feedback {
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-#score {
-  margin-top: 15px;
-  font-weight: bold;
   font-size: 18px;
 }
 
+.question { font-size: 20px; margin-bottom: 15px; }
+
 .option {
-  display: block;
   width: 100%;
+  padding: 14px;
   margin: 8px 0;
-  padding: 12px 15px;
-  border: 1px solid #888;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid #777;
   background-color: var(--option-bg);
-  transition: 0.3s ease, transform 0.2s ease;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: 0.3s ease;
   text-align: left;
-  color: var(--text-color); 
 }
 
 .option:hover {
@@ -181,49 +198,89 @@ input[type="file"] {
   transform: translateY(-2px);
 }
 
-#progressBar {
-  width: 0%;
-  height: 100%;
-  background-color: #007bff;
-  border-radius: 10px;
-  transition: width 0.5s ease; 
+.quiz-buttons { display: flex; justify-content: flex-end; margin-top: 15px; }
+
+.next-btn {
+  background-color: var(--btn-bg);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 
-body.dark .option {
+/* Results */
+#score {
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#restartMenu {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#restartMenu button {
+  padding: 12px 25px;
+  margin-top: 10px;
+  border: none;
+  background-color: var(--btn-bg);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Cancel Quiz Button (Upper Left) */
+.cancel-btn.top-left {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background-color: #dc3545;
+  color: #fff;
+  cursor: pointer;
+  z-index: 999;
+  transition: 0.2s ease;
+}
+
+.cancel-btn.top-left:hover {
+  background-color: #b02a37;
+}
+
+.shortcut-info {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+body.dark .shortcut-info {
+  background-color: #3a3a3a;
   color: #eee;
 }
 
-#manualInput {
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  border-radius: 5px;
-  border: 1px solid #888;
-  font-family: inherit;
+/* Small keyboard hint inside options */
+.option .shortcut {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 50%;
   font-size: 14px;
-  resize: vertical;
-  background-color: var(--option-bg);
-  color: var(--text-color);
+  line-height: 20px;
 }
 
-#manualInput:focus {
-  outline: none;
-  border-color: var(--btn-bg);
-}
-
-#startManualBtn {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
-  transition: 0.2s;
-}
-
-#startManualBtn:hover {
-  background-color: var(--btn-hover);
+body.dark .option .shortcut {
+  background-color: #28a745;
 }
